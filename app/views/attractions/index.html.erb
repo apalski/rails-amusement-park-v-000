@@ -1,0 +1,16 @@
+
+<ul>
+<% @attractions.each do |ride| %>
+	<% if !@user.admin %>
+		<li><%= link_to "Go on #{ride.name}", attraction_path(ride) %></li>
+	<% end %>	
+	<% if @user.admin %>
+		<li><%= link_to "Show #{ride.name}", attraction_path(ride) %></li>
+	<% end %>	
+<% end %>	
+</ul>
+
+<% if @user.admin %>
+	<%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+	
